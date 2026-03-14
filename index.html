@@ -1,57 +1,825 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Numerology Website</title>
+    <title>Numerología Kabalística Fusión - Descubre los Secretos del Universo</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-black: #0a0a0f;
+            --bg-deep-purple: #1a0a2e;
+            --bg-dark-blue: #0d1b2a;
+            --accent-gold: #ffd700;
+            --accent-violet: #9d4edd;
+            --accent-cyan: #00d4ff;
+            --text-light: #e0e0e0;
+            --text-white: #ffffff;
+        }
+
         body {
-            background-color: #212121;
-            color: gold;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-black) 0%, var(--bg-deep-purple) 50%, var(--bg-dark-blue) 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Mystical Particles Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 15s infinite;
+            box-shadow: 0 0 10px var(--accent-gold);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Sacred Geometry Background Pattern */
+        .sacred-geometry {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 20% 80%, var(--accent-violet) 2px, transparent 2px),
+                radial-gradient(circle at 80% 20%, var(--accent-cyan) 2px, transparent 2px),
+                radial-gradient(circle at 40% 40%, var(--accent-gold) 1px, transparent 1px);
+            background-size: 100px 100px, 150px 150px, 80px 80px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(157, 78, 221, 0.3);
+        }
+
+        nav .logo {
+            font-family: 'Georgia', serif;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            animation: fadeIn 2s;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+            background: radial-gradient(ellipse at center, rgba(157, 78, 221, 0.1) 0%, transparent 70%);
         }
-        h1 {
-            font-size: 48px;
-            margin-top: 20px;
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
         }
-        p {
-            font-size: 18px;
-            margin: 20px;
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite reverse;
         }
-        a {
-            color: gold;
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.6;
+            }
+        }
+
+        .zodiac-ring {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 2px dashed rgba(255, 215, 0, 0.2);
+            border-radius: 50%;
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 20;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(0, 212, 255, 0.3));
+            border: 1px solid var(--accent-violet);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+            }
+            to {
+                box-shadow: 0 0 30px rgba(157, 78, 221, 0.8), 0 0 50px rgba(0, 212, 255, 0.5);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--text-white);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .hero h1 span {
+            color: var(--accent-gold);
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--accent-cyan);
+            margin-bottom: 3rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--accent-gold), #ffaa00);
+            color: var(--bg-black);
             text-decoration: none;
             font-weight: bold;
-        }
-        a:hover {
-            color: #FFD700;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            color: white;
+            font-size: 1.2rem;
+            border-radius: 50px;
             border: none;
-            border-radius: 5px;
-            padding: 15px;
-            font-size: 18px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
             cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Georgia', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '✦';
+            display: block;
+            text-align: center;
+            color: var(--accent-violet);
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        /* What You Will Discover */
+        .discover {
+            background: linear-gradient(180deg, transparent, rgba(157, 78, 221, 0.05), transparent);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: rgba(26, 10, 46, 0.6);
+            border: 1px solid rgba(157, 78, 221, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 40px rgba(157, 78, 221, 0.3);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .card h3 {
+            font-family: 'Georgia', serif;
+            font-size: 1.4rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Who Is This For */
+        .audience {
+            background: linear-gradient(135deg, rgba(13, 27, 42, 0.8), rgba(26, 10, 46, 0.8));
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .audience-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border-left: 3px solid var(--accent-violet);
+            transition: all 0.3s ease;
+        }
+
+        .audience-item:hover {
+            background: rgba(157, 78, 221, 0.1);
+            transform: translateX(10px);
+            border-left-color: var(--accent-gold);
+        }
+
+        .audience-icon {
+            font-size: 2rem;
+            color: var(--accent-gold);
+        }
+
+        .audience-item p {
+            font-size: 1.1rem;
+            color: var(--text-white);
+        }
+
+        /* Scarcity Timer */
+        .scarcity {
+            background: radial-gradient(ellipse at center, rgba(255, 0, 0, 0.1), transparent);
+            text-align: center;
+        }
+
+        .scarcity-badge {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            animation: pulse-red 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-red {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 68, 68, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 68, 68, 0.8); }
+        }
+
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .timer-box {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(0, 212, 255, 0.3));
+            border: 2px solid var(--accent-violet);
+            border-radius: 20px;
+            padding: 2rem;
+            min-width: 120px;
+            backdrop-filter: blur(10px);
+        }
+
+        .timer-value {
+            font-family: 'Courier New', monospace;
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            display: block;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .timer-label {
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+        }
+
+        .scarcity-text {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 2rem auto;
+            line-height: 1.6;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--bg-deep-purple), var(--bg-black));
+            text-align: center;
+            position: relative;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239d4edd' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .final-cta h2 {
+            font-family: 'Georgia', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--text-white);
+            margin-bottom: 1rem;
+        }
+
+        .final-cta h2 span {
+            color: var(--accent-gold);
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            color: var(--accent-cyan);
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .final-cta .cta-button {
+            font-size: 1.4rem;
+            padding: 1.5rem 4rem;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: whatsapp-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes whatsapp-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(37, 211, 102, 0.3);
+            animation: ripple 2s infinite;
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--bg-black);
+            border-top: 1px solid rgba(157, 78, 221, 0.2);
+        }
+
+        footer p {
+            color: rgba(224, 224, 224, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero::before, .hero::after, .zodiac-ring {
+                width: 300px;
+                height: 300px;
+            }
+
+            .timer-container {
+                gap: 1rem;
+            }
+
+            .timer-box {
+                min-width: 80px;
+                padding: 1.5rem 1rem;
+            }
+
+            .timer-value {
+                font-size: 2rem;
+            }
+
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Constellation Lines */
+        .constellation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-gold);
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to the Mystical World of Numerology</h1>
-    <p>Discover the secrets of your numbers!</p>
-    <p>Click below to explore more about numerology.</p>
-    <a href="#">Learn More</a>
-    <button class="whatsapp-button" onclick="window.open('https://wa.me/11234567890', '_blank')">Contact Us on WhatsApp</button>
+    <!-- Mystical Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Sacred Geometry Pattern -->
+    <div class="sacred-geometry"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">✦ Numerología Kabalística</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="zodiac-ring"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Conocimiento Esotérico Prohibido</div>
+            <h1>Descubre los Secretos de la <span>Numerología Kabalística</span></h1>
+            <p class="hero-subtitle">"El lenguaje oculto del universo revelado."</p>
+            <a href="https://wa.me/351929139917?text=Hola !%20quiero%20informacion%20sobre%20este%20ebook%20Numerologia%20Kabalistica%20Fusion" class="cta-button" target="_blank">Obtener el Ebook</a>
+        </div>
+    </section>
+
+    <!-- What You Will Discover -->
+    <section class="discover">
+        <div class="container">
+            <h2 class="section-title reveal">Lo Que Descubrirás</h2>
+            <div class="cards-grid">
+                <div class="card reveal">
+                    <span class="card-icon">🔮</span>
+                    <h3>Numerología Sagrada</h3>
+                    <p>Desvela los misterios ancestrales de los números y su influencia divina en tu destino. Cada dígito guarda un secreto cósmico esperando ser revelado.</p>
+                </div>
+                <div class="card reveal">
+                    <span class="card-icon">✨</span>
+                    <h3>Símbolos Cósmicos</h3>
+                    <p>Interpreta los signos celestiales que guían tu camino espiritual. Aprende a leer el lenguaje universal escrito en las estrellas.</p>
+                </div>
+                <div class="card reveal">
+                    <span class="card-icon">🌙</span>
+                    <h3>Arquetipos Mitológicos</h3>
+                    <p>Conecta con las fuerzas arquetípicas que habitan en tu inconsciente. Descubre qué dioses y mitos rigen tu existencia.</p>
+                </div>
+                <div class="card reveal">
+                    <span class="card-icon">⚡</span>
+                    <h3>Significado Oculto</h3>
+                    <p>Descifra el verdadero poder de cada número desde el 1 al 9, maestros y kármicos. La sabiduría milenaria de la Cábala a tu alcance.</p>
+                </div>
+                <div class="card reveal">
+                    <span class="card-icon">🦋</span>
+                    <h3>Transformación Espiritual</h3>
+                    <p>Experimenta una metamorfosis profunda alineando tu energía con las vibraciones universales. Despierta tu verdadero potencial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who This Book Is For -->
+    <section class="audience">
+        <div class="container">
+            <h2 class="section-title reveal">¿Para Quién Es Este Libro?</h2>
+            <div class="audience-grid">
+                <div class="audience-item reveal">
+                    <span class="audience-icon">🕯️</span>
+                    <p>Buscadores espirituales en camino de iluminación</p>
+                </div>
+                <div class="audience-item reveal">
+                    <span class="audience-icon">🃏</span>
+                    <p>Lectores de Tarot que desean profundizar su conocimiento</p>
+                </div>
+                <div class="audience-item reveal">
+                    <span class="audience-icon">♈</span>
+                    <p>Amantes de la astrología y los misterios cósmicos</p>
+                </div>
+                <div class="audience-item reveal">
+                    <span class="audience-icon">🔍</span>
+                    <p>Personas interesadas en el autoconocimiento profundo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scarcity Timer -->
+    <section class="scarcity">
+        <div class="container">
+            <div class="scarcity-badge">⚡ OFERTA ESPECIAL</div>
+            <h2 class="section-title reveal">Oferta Especial Disponible Por Tiempo Limitado</h2>
+            <div class="timer-container reveal">
+                <div class="timer-box">
+                    <span class="timer-value" id="minutes">10</span>
+                    <span class="timer-label">Minutos</span>
+                </div>
+                <div class="timer-box">
+                    <span class="timer-value" id="seconds">00</span>
+                    <span class="timer-label">Segundos</span>
+                </div>
+            </div>
+            <p class="scarcity-text reveal">No dejes pasar esta oportunidad única de acceder a los secretos milenarios de la numerología kabalística. El conocimiento cósmico te espera.</p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2 class="reveal">Descifra el <span>lenguaje secreto</span> del universo</h2>
+            <p class="reveal">Tu transformación espiritual comienza ahora</p>
+            <a href="https://wa.me/351929139917?text=Hola !%20quiero%20informacion%20sobre%20este%20ebook%20Numerologia%20Kabalistica%20Fusion" class="cta-button reveal" target="_blank">Quiero este Ebook</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Numerología Kabalística Fusión. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/351929139917?text=Hola !%20quiero%20informacion%20sobre%20este%20ebook%20Numerologia%20Kabalistica%20Fusion" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+        💬
+    </a>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                
+                // Random colors
+                const colors = ['#ffd700', '#9d4edd', '#00d4ff'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.boxShadow = `0 0 10px ${particle.style.background}`;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Countdown Timer
+        function startTimer() {
+            let totalSeconds = 10 * 60; // 10 minutes
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+
+            function updateTimer() {
+                const minutes = Math.floor(totalSeconds / 60);
+                const seconds = totalSeconds % 60;
+
+                minutesEl.textContent = minutes.toString().padStart(2, '0');
+                secondsEl.textContent = seconds.toString().padStart(2, '0');
+
+                if (totalSeconds > 0) {
+                    totalSeconds--;
+                } else {
+                    // Reset timer for continuous urgency
+                    totalSeconds = 10 * 60;
+                }
+            }
+
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+
+        // Scroll Reveal Animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            startTimer();
+            revealOnScroll();
+        });
+
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
